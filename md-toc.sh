@@ -29,7 +29,7 @@ fi
 MARKDOWN="$1"
 
 # First check for headers without additional text, not sure why this is showing up sometimes
-sed -i 's/^#\+\s*$//' "$MARKDOWN"
+sed -i '/^#\+\s*$/d' "$MARKDOWN"
 
 # Unfortunatly I do not know a better method than to write to a temp file
 TEMP=$(mktemp)

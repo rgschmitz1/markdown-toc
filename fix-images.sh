@@ -18,7 +18,10 @@ MARKDOWN="$1"
 HTML="$2"
 
 # Delete all gd2md inline alerts (additional optional headers have been removed in advance)
-sed -i '/gdcalert/d; /gd2md-html alert/d; /<p .*delete this message.*p>/d' "$MARKDOWN"
+sed -i '/gdcalert/d;
+	/gd2md-html alert/d;
+	/<p .*delete this message.*p>/d;
+	/^<!--/d' "$MARKDOWN"
 
 # Gather source and destination file names
 srcimages=($(grep -o 'images/image[0-9]\+\.\w\+' "$HTML"))
